@@ -128,7 +128,7 @@ public login(mobile,password){
 
     if(this.isLogged)
     {
-    this.router.navigate(['/package']);
+    this.router.navigate(['/bookings']);
     }
     else
     {
