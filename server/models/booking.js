@@ -4,7 +4,10 @@ var booking = new Schema({
   _id: String,
   bookingId: String,
   userId: String,
-  packageId: String,
+  packageId: {
+    type: String,
+    ref: 'package'
+  },
   patients:[{
       name: String,
       mobile: String,

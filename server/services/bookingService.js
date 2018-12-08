@@ -36,44 +36,48 @@ exports.bookPackage = (req,res)=>{
 
 
 exports.viewBooking = (req,res)=>{
-    Booking.find({userId:req.body.userId},(err,data)=>{
-        if(err){
-            res.send({
-                status: 'fail',
-                data: {}
-              });
-        }
-        else
-        {
-            res.send(
-                {
-                    status: 'success',
-                    code: 200,
-                    data: data
-                  }
-            );
-        }
-    });
+    Booking.find({userId:req.body.userId}).populate({
+        path:'packageId'
+      }).exec(function(err, data){
+    if(err){
+        console.log(err)
+
+        res.send({
+            status: 'fail',
+            data: {}
+          });
+    }
+    else{
+        res.send({
+        status: 'success',
+        code:200,
+        data: data
+      });
+            
+            }
+        });
 }
 
 
 exports.viewAllbooking = (req,res)=>{
-    Booking.find({},(err,data)=>{
-        if(err){
-            res.send({
-                status: 'fail',
-                data: {}
-              });
-        }
-        else
-        {
-            res.send(
-                {
-                    status: 'success',
-                    code: 200,
-                    data: data
-                  }
-            );
-        }
-    });
+    Booking.find({}).populate({
+        path:'packageId'
+      }).exec(function(err, data){
+    if(err){
+        console.log(err)
+
+        res.send({
+            status: 'fail',
+            data: {}
+          });
+    }
+    else{
+        res.send({
+        status: 'success',
+        code:200,
+        data: data
+      });
+            
+            }
+        });
 }

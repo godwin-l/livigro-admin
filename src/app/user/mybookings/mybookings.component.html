@@ -16,14 +16,14 @@
                    </tr>
                 </thead>
                 <tbody>
-                   <tr *ngFor="let userBooking of userBookings">
-                      <td>  {{userBooking.patients[0].name}} </td>
-                      <td>  {{userBooking.patients[0].mobile}} </td>
-                      <td>  {{userBooking.patients[0].address}} </td>
-                      <td>  {{packageDetail.packageName}} </td>
-                      <td>  ₹{{packageDetail.price}} </td>
-                      <td>  {{userBooking.createdOn}} </td>
-                   </tr>
+                  <tr *ngFor="let userBooking of userBookings">
+                     <td>  {{userBooking.patients[0].name}} </td>
+                     <td>  {{userBooking.patients[0].mobile}} </td>
+                     <td>  {{userBooking.patients[0].address}} </td>
+                     <td>  {{userBooking.packageId.packageName}} </td>
+                     <td>  ₹{{userBooking.packageId.price}} </td>
+                     <td>  {{userBooking.createdOn}} </td>
+                  </tr>
                 </tbody>
              </table>
           </div>
