@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+  <div class="modal" [ngStyle]="{'display':display}" *ngIf="!isOTP">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width:51% !important">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Sign in with Mobile</h4>
+          <button type="button" class="close" (click)="closeModalDialog()" >&times;</button>
+        </div>
+        
+        <div class="modal-body" >
+          <label for="mobile"><b>Mobile Number</b></label>
+    <input type="text" placeholder="Enter Mobile Number" #mobile  required>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button"  class="btn btn-success" (click)="otpLogin(mobile.value)" >Continue</button>
+          <button type="button" class="btn btn-danger" (click)="closeModalDialog()" >Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" [ngStyle]="{'display':display}" *ngIf="isOTP">
+      <div class="modal-dialog">
+        <div class="modal-content" style="width:51% !important">
+        
+          <div class="modal-header">
+            <h4 class="modal-title">Sign in with Mobile</h4>
+            <button type="button" class="close" (click)="closeModalDialog()" >&times;</button>
+          </div>
+          
+          <div class="modal-body" >
+            <label for="mobile"><b>OTP</b></label>
+      <input type="text" placeholder="Enter OTP" #otp  required>
+          </div>
+          <b *ngIf="otpmsgStatus" style="color:red;margin-left: 6vw;">{{otpmsg}}</b>
+          
+          <div class="modal-footer">
+              <button type="button"  class="btn btn-success"  (click)="verifyOTP(otp.value,packageInfo)" >Sign in</button>
+            <button type="button" class="btn btn-danger" (click)="closeModalDialog()" >Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title" style="text-align:center;font-size:larger"><b>{{packageInfo.packageName}}</b></h4>
+
+      <p class="card-description"><b>₹ {{packageInfo.price}}</b></p>
+      <p class="card-description">Parameters Covered : <span>{{packageInfo.tests.length}}</span></p>
+      <ul class="list-star" *ngFor="let test of packageInfo.tests">
+        <li class="card-description">{{test.testId.testName}}</li>
+      </ul>
+      <p class="card-description"><i class="fa fa-cutlery" aria-hidden="true"></i> {{packageInfo.fasting}} hrs fasting required</p>
+      
+
+    </div>
+  </div>
+</div>
+<ngx-spinner
+bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#fff"
+type = "ball-clip-rotate-multiple"
+></ngx-spinner>

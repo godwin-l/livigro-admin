@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+       <div class="card-body">
+          <h4 class="card-title">My Bookings</h4>
+          <div class="table-responsive">
+             <table class="table table-striped">
+                <thead>
+                   <tr>
+                      <th> Name </th>
+                      <th> Mobile </th>
+                      <th> Address </th>
+                      <th> Package Name </th>
+                      <th> Package Price </th>
+                      <th> Date Purchased </th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let userBooking of userBookings">
+                      <td>  {{userBooking.patients[0].name}} </td>
+                      <td>  {{userBooking.patients[0].mobile}} </td>
+                      <td>  {{userBooking.patients[0].address}} </td>
+                      <td>  {{packageDetail.packageName}} </td>
+                      <td>  ₹{{packageDetail.price}} </td>
+                      <td>  {{userBooking.createdOn}} </td>
+                   </tr>
+                </tbody>
+             </table>
+          </div>
+       </div>
+    </div>
+ </div>

@@ -1,0 +1,55 @@
+{"settings": {
+  "number_of_shards": 1,
+
+      "analysis": {
+    "filter": {
+      "edgeNgram": {
+        "type": "edge_ngram",
+        "min_gram": "1",
+        "max_gram": "30"
+      },
+      "stopWord": {
+        "type": "stop"
+      }
+    },
+    "analyzer": {
+      "packageAnalyzer": {
+        "filter": [
+          "lowercase",
+          "edgeNgram"
+        ],
+        "type": "custom",
+        "tokenizer": "standard"
+      },
+      "search_analyzer": {
+        "filter": [
+          "lowercase"
+        ],
+        "type": "custom",
+        "tokenizer": "standard"
+      }
+}
+}
+  }
+,
+"mappings": {
+
+"packages" : {
+  "properties" : {
+      
+      "packageName":{
+        "type":"text",
+            "analyzer": "packageAnalyzer",
+              "search_analyzer": "search_analyzer"
+      },
+"rawTest":{
+        "type":"text",
+"analyzer": "standard",
+"search_analyzer": "search_analyzer"
+      }
+  }
+}
+
+
+}
+}

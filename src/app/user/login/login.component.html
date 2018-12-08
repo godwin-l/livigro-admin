@@ -1,0 +1,92 @@
+<app-navbar></app-navbar>
+
+<div class="modal" [ngStyle]="{'display':display}" *ngIf="mobilepopup">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width:51% !important">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Sign in with Mobile</h4>
+          <button type="button" class="close" (click)="closeModalDialog()" >&times;</button>
+        </div>
+        
+        <div class="modal-body" >
+          <label for="mobile"><b>Mobile Number</b></label>
+    <input type="text" placeholder="Enter Mobile Number" #mobile  required>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button"  class="btn btn-success" (click)="otpLogin(mobile.value)" >Continue</button>
+          <button type="button" class="btn btn-danger" (click)="closeModalDialog()" >Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" [ngStyle]="{'display':display}" *ngIf="isOTP" >
+      <div class="modal-dialog">
+        <div class="modal-content" style="width:51% !important">
+        
+          <div class="modal-header">
+            <h4 class="modal-title">Sign in with Mobile</h4>
+            <button type="button" class="close" (click)="closeModalDialog()" >&times;</button>
+          </div>
+          
+          <div class="modal-body" >
+            <label for="mobile"><b>OTP</b></label>
+      <input type="text" placeholder="Enter OTP" #otp  required>
+          </div>
+          <b *ngIf="otpmsgStatus" style="color:red;margin-left: 6vw;">{{otpmsg}}</b>
+          
+          <div class="modal-footer">
+              <button type="button"  class="btn btn-success"  (click)="verifyOTP(otp.value)" >Sign in</button>
+            <button type="button" class="btn btn-danger" (click)="closeModalDialog()" >Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="backdrop" [ngStyle]="{'display':display}" *ngIf="showpopup()"></div>
+<div class="modal" [ngStyle]="{'display':display}" *ngIf="showpopup()" >
+    <div class="modal-content">
+      <div class="modal-header">
+          <h6>Incorrect Mobile number or Password</h6>
+        <span class="close" (click)="closeModalDialog()">&times;</span>
+        
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-md-6 d-flex align-items-stretch grid-margin" style="margin-left:20vw;margin-top:5vw;">
+    <div class="row flex-grow">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Login</h4>
+            <form class="forms-sample">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Mobile Number</label>
+                <input type="text" class="form-control" #mobile id="exampleInputEmail1" minlength="10" maxlength="10"  placeholder="Enter Mobile Number" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" #password id="exampleInputPassword1" minlength="8" placeholder="Password" required>
+              </div>
+              <button type="submit" class="btn btn-success mr-2" (click)="login(mobile.value,password.value)">Login</button>
+              <span>or</span>
+              <button type="submit" style="margin-left:1vw" class="btn btn-success mr-2" (click)="otpbutton()">Sign in with mobile</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+</div>
+
+
+<ngx-spinner
+bdColor = "rgba(51, 51, 51, 0.8)"
+size = "large"
+color = "#fff"
+type = "ball-clip-rotate-multiple"
+></ngx-spinner>
