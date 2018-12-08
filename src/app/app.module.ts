@@ -10,6 +10,7 @@ import { AutoCompleteModule } from 'ng5-auto-complete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule, MatInputModule,MatFormFieldModule } from '@angular/material';
+import {DataTableModule} from "angular-6-datatable";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -36,6 +37,7 @@ import { MybookingsComponent } from './user/mybookings/mybookings.component';
     RouterModule,
     HttpClientModule,
     AppRoutingModule,
+    DataTableModule,
     FormsModule,
     MatInputModule,
     BrowserAnimationsModule,
