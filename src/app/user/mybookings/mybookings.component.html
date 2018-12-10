@@ -4,7 +4,7 @@
        <div class="card-body">
           <h4 class="card-title">Bookings</h4>
           <div class="table-responsive">
-             <table class="table table-striped">
+             <table class="table table-striped" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                 <thead>
                    <tr>
                       <th> Name </th>
@@ -16,7 +16,7 @@
                    </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let userBooking of userBookings">
+                  <tr *ngFor="let userBooking of userBookings.data">
                      <td>  {{userBooking.patients[0].name}} </td>
                      <td>  {{userBooking.patients[0].mobile}} </td>
                      <td>  {{userBooking.patients[0].address}} </td>
